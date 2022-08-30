@@ -265,7 +265,7 @@ with open(path.join(args.train_dir, 'args.json'), 'w') as f:
 torch.manual_seed(20200823)
 np.random.seed(20200823)
 
-factor = 1
+factor = 4
 dset = datasets[args.dataset_type](
                args.data_dir,
                split="train",

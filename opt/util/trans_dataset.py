@@ -12,7 +12,7 @@ import json
 import numpy as np
 
 
-class NeRFDataset(DatasetBase):
+class TransDataset(DatasetBase):
     """
     NeRF dataset loader
     """
@@ -53,14 +53,8 @@ class NeRFDataset(DatasetBase):
         all_c2w = []
         all_gt = []
 
-        # split_name = split if split != "test_train" else "train"
-        # data_path = path.join(root, split_name)
-        # data_json = path.join(root, "transforms_" + split_name + ".json")
-        # split_name = split if split != "test_train" else "train"
         data_path = path.join(root)
         data_json = path.join(root, "transforms.json")
-        if split == 'test':
-            data_json = path.join(root, "transforms_test.json")
 
         print("LOAD DATA", data_path)
 
@@ -71,7 +65,7 @@ class NeRFDataset(DatasetBase):
 
         for frame in tqdm(j["frames"]):
             # fpath = path.join(data_path, path.basename(frame["file_path"]) + ".png")
-            fpath = path.join(data_path, frame["file_path"])
+            fpath = path.join(data_path, path.basename(frame["file_path"]))
             c2w = torch.tensor(frame["transform_matrix"], dtype=torch.float32)
             c2w = c2w @ cam_trans  # To OpenCV
 

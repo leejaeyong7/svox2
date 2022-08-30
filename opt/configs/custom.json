@@ -5,7 +5,7 @@
     "background_reso": 1024,
     "cam_scale_factor": 0.9,
     "upsamp_every": 25600,
-    "near_clip": 0.35,
+    "near_clip": 0.05,
     "lr_sigma": 3e1,
     "lr_sh": 1e-2,
     "lr_sigma_delay_steps": 0,
